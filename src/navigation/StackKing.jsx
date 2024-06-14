@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import EquipoScreen from '../Screen/EquipoScreen';
+import EquipoScreen from '../Screen/EquipoScreen'
 import KingsLeague from '../Screen/KingsLeagueScreen';
 
 const KingStack = createNativeStackNavigator();
@@ -13,7 +13,7 @@ export default function StackKing() {
                 component={KingsLeague}
             />
             <KingStack.Screen
-                name="KingsLeague - "
+                name="EquipoScreen"
                 component={EquipoScreen}
             />
         </KingStack.Navigator>

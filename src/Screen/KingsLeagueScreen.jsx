@@ -6,15 +6,15 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function KingsLeague() {
     const [teams, setTeams] = useState([])
-
     const navigation = useNavigation();
 
     useEffect(() => {
-        getTeams().then((data) => {
-            console.log(data)
-            setTeams(data)
-        })
-    }, [])
+        const fetchTeams = async () => {
+            const teamsData = await getTeams();
+            setTeams(teamsData);
+        };
+        fetchTeams();
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -23,8 +23,8 @@ export default function KingsLeague() {
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => navigation.navigate('EquipoScreen', {
-                        teamColor: backgroundColor,
-                        teamName: item.nombre, teamid: item.id
+                        teamColor: item.color,
+                        teamName: item.nombre, teamId: item.id
                     })}>
                         <EquipoCard key={item.id} item={item} />
                     </TouchableOpacity>

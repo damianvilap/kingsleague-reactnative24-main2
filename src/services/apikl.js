@@ -7,7 +7,7 @@ export async function getTeams() {
 }
 
 export async function getPlayersByTeam(teamId) {
-  const response = await fetch(`${API}player/?teamId=${teamId}`)
+  const response = await fetch(`${BASE_URL}/team/${teamId}/player`);
   const json = await response.json();
   return json.players
 }

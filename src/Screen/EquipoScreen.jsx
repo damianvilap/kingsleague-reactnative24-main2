@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import { getPlayersByTeam } from '../services/apikl';
 import JugadorCard from '../components/JugadorCard';
 
-export default function EquipoScreen({ route }) {
-    const { teamId } = route.params;
+export default function EquipoScreen({ }) {
+    const route = useRoute();
+    const { teamId, teamColor } = route.params;
     const [players, setPlayers] = useState([]);
 
     useEffect(() => {
         const fetchPlayers = async () => {
-            const data = await getPlayersByTeam(teamId);
-            setPlayers(data);
+            const playersData = await getPlayersByTeam(teamId);
+            setPlayers(playersData);
         };
         fetchPlayers();
     }, [teamId]);
@@ -21,7 +23,7 @@ export default function EquipoScreen({ route }) {
                 data={players}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <JugadorCard key={item.id} item={item} teamColor={teamColor} />
+                    <JugadorCard item={item} teamColor={teamColor} />
                 )}
             />
         </View>
