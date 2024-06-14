@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text } from 'react-native'
 
 export default function EquipoCard({ item }) {
 
-    const backgroundColor = getBackgroundColor(item.nombre);
+    const backgroundColor = item.color;
     return (
         <View style={[styles.card, { backgroundColor }]}>
             <Image source={{ uri: item.escudo }} style={styles.logo} />
@@ -13,22 +13,6 @@ export default function EquipoCard({ item }) {
             <Image source={{ uri: item.imagenpresidente }} style={styles.presidente} />
         </View>
     )
-}
-function getBackgroundColor(teamName) {
-    switch (teamName) {
-        case '1K FC':
-            return '#4A90E2'; // Azul
-        case 'Aniquiladores FC':
-            return '#D0021B'; // Rojo
-        case 'El Barrio':
-            return '#7ED321'; // Verde
-        case 'Jijantes FC':
-            return '#9013FE'; // Púrpura
-        case 'Kunisports':
-            return '#F5A623'; // Naranja
-        default:
-            return '#FFFFFF'; // Blanco por defecto
-    }
 }
 
 const styles = StyleSheet.create({

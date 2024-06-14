@@ -16,7 +16,6 @@ export default function StackKing() {
                 name="KingsLeague - "
                 component={EquipoScreen}
             />
-
         </KingStack.Navigator>
     )
 }

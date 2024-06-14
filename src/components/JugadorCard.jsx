@@ -1,37 +1,43 @@
 import React from 'react'
 import { StyleSheet, View, Image, Text } from 'react-native'
 
-export default function JugadorCard({ item }) {
+export default function JugadorCard({ item, teamColor }) {
     return (
-        <View style={styles.playerItem}>
-            <Image source={{ uri: item.foto }} style={styles.photo} />
-            <View style={styles.playerInfo}>
-                <Text style={styles.playerName}>{item.nombre}</Text>
-                <Text style={styles.position}>{item.posicion}</Text>
+        <View style={[styles.card, { backgroundColor: teamColor }]}>
+            <Image source={{ uri: item.imagen }} style={styles.image} />
+            <View style={styles.info}>
+                <Text style={styles.name}>{item.nombre}</Text>
+                <Text style={styles.position}>{item.demarcacion}</Text>
+                <Text style={styles.rating}>Media {item.media}</Text>
             </View>
-            <View style={styles.media}>
-                <Text style={styles.mediaText}>Media {item.media}</Text>
-            </View>
-        </View>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
+    card: {
+        flexDirection: 'row',
+        margin: 10,
+        padding: 10,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
     image: {
-        width: 80,
-        height: 80
+        width: 50,
+        height: 50,
+        borderRadius: 25,
     },
-    row: {
-        flex: 1,
-        flexDirection: "row",
-        margin: 10
+    info: {
+        marginLeft: 10,
     },
-    column: {
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "flex-start"
+    name: {
+        color: 'white',
+        fontWeight: 'bold',
     },
-    text: {
-        fontSize: 18
-    }
+    position: {
+        color: 'white',
+    },
+    rating: {
+        color: 'orange',
+    },
 });
