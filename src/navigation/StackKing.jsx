@@ -13,8 +13,9 @@ export default function StackKing() {
                 component={KingsLeague}
             />
             <KingStack.Screen
-                name="EquipoScreen"
+                name="KingsLeague - ${route.params.teamName}"
                 component={EquipoScreen}
+
             />
         </KingStack.Navigator>
     )
